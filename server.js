@@ -37,6 +37,11 @@ app.get('/api/getKeyStatuses', (req, res) => {
     res.status(200).json(apiKeyStatuses);
 });
 
+// Ping endpoint to keep server alive
+app.get('/ping', (req, res) => {
+    res.status(200).send('Ping received');
+});
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
