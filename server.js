@@ -3,21 +3,19 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Simulate a database with an in-memory object
-let apiKeyStatuses = {};
+let apiKeyStatuses = {}; // Store API key statuses
 
-// Middleware
 app.use(bodyParser.json());
 
-// Update API key status
-app.post('/api/update', (req, res) => {
-    const { apiKey, timestamp } = req.body;
-    apiKeyStatuses[apiKey] = timestamp;
+// Endpoint to update API key status
+app.post('/api/updateKeyStatus', (req, res) => {
+    const { apiKey, failureTimestamp } = req.body;
+    apiKeyStatuses[apiKey] = failureTimestamp;
     res.status(200).send('API key status updated');
 });
 
-// Get all API key statuses
-app.get('/api/statuses', (req, res) => {
+// Endpoint to fetch all API key statuses
+app.get('/api/getKeyStatuses', (req, res) => {
     res.status(200).json(apiKeyStatuses);
 });
 
