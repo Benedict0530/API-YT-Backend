@@ -14,7 +14,7 @@ app.post('/api/updateKeyStatus', (req, res) => {
     try {
         if (!apiKey || !timestamp) {
             throw new Error('Missing apiKey or timestamp');
-        }wqe
+        }
 
         // Parse timestamp to integer
         const parsedTimestamp = parseInt(timestamp);
